@@ -17,7 +17,15 @@
       <!-- Navigation -->
       <nav>
         <a href="#" class="heading">Lilac Template</a>
-        <div class="menu-list">
+        <!-- ADD THIS: Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- ADD id="menu-list" to your menu -->
+        <div class="menu-list" id="menu-list">
           <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
         </div>
@@ -61,21 +69,18 @@
         <div class="text-content">
           <div class="text-no-btn">
             <div class="secondary-text-content">
-                <h2>Live a fulfilling life.</h2>
-            <br />
-            <p>
-              Life can be challenging—especially when you're trying to balance
-              your personal and professional life.
-            </p>
-            <br />
-            <p>
-              It's easy to feel like you're alone in facing these challenges,
-              but I want you to know that I'm here to help.
-            </p>
+              <h2>Live a fulfilling life.</h2>
+              <br />
+              <p>
+                Life can be challenging—especially when you're trying to balance
+                your personal and professional life.
+              </p>
+              <br />
+              <p>
+                It's easy to feel like you're alone in facing these challenges,
+                but I want you to know that I'm here to help.
+              </p>
             </div>
-            
-
-            
           </div>
 
           <div>
@@ -154,12 +159,14 @@
               <li>Difficulty maintaining relationships</li>
               <li>Feeling constantly exhausted or unmotivated</li>
               <li>A pervasive sense of being overwhelmed</li>
-            </ul><br>
+            </ul>
+            <br />
 
             <p class="closing-text">
               With empathy and guidance, we'll work together to navigate the
               challenges life throws your way.
-            </p><br>
+            </p>
+            <br />
           </div>
 
           <div>
@@ -373,6 +380,25 @@
 
     <!-- JavaScript for FAQS -->
     <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const menuList = document.getElementById("menu-list");
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", () => {
+          mobileMenuBtn.classList.toggle("active");
+          menuList.classList.toggle("active");
+        });
+      }
+
+      // Close menu when clicking menu items
+      document.querySelectorAll(".menu-list a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenuBtn.classList.remove("active");
+          menuList.classList.remove("active");
+        });
+      });
+
       document
         .querySelectorAll(".faqs-button, .professional-button")
         .forEach((button) => {
